@@ -1,4 +1,10 @@
-import type { Habit, HabitCompletion, LocalDate, Today } from '../domain/types'
+import type {
+  DraftHabit,
+  Habit,
+  HabitCompletion,
+  LocalDate,
+  Today,
+} from '../domain/types'
 
 // Outbound ports the habits core depends on. Interfaces only — implemented by adapters.
 
@@ -10,8 +16,12 @@ export interface Clock {
 /** Persists and retrieves a user's habits and completions. */
 export interface HabitRepository {
   listForUser: (userId: string) => Promise<ReadonlyArray<Habit>>
-  add: (userId: string, habit: Habit) => Promise<void>
-  recordCompletion: (completion: HabitCompletion) => Promise<void>
+  /** Persists a new habit and returns it with its assigned id. */
+  add: (userId: string, draft: DraftHabit) => Promise<Habit>
+  recordCompletion: (
+    userId: string,
+    completion: HabitCompletion,
+  ) => Promise<void>
   completionsForUserOn: (
     userId: string,
     date: LocalDate,

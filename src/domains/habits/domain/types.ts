@@ -37,6 +37,9 @@ export interface Habit {
   readonly timer: HabitTimer | null
 }
 
+/** A habit before it is persisted — the id is assigned by the repository. */
+export type DraftHabit = Omit<Habit, 'id'>
+
 /** Records that a habit was completed on a given local date. */
 export interface HabitCompletion {
   readonly habitId: HabitId
