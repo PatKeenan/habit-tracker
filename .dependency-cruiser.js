@@ -19,7 +19,10 @@ export default {
         'A domain core (domains/<d>/domain) may import only its own domain layer and the pure ' +
         'shared kernel — never application, adapters, lib, framework, or ORM.',
       severity: 'error',
-      from: { path: '^src/domains/[^/]+/domain/' },
+      from: {
+        path: '^src/domains/[^/]+/domain/',
+        pathNot: ['\\.(test|spec)\\.ts$'],
+      },
       to: { pathNot: ['^src/domains/[^/]+/domain/', '^src/shared/'] },
     },
     {
@@ -28,7 +31,10 @@ export default {
         'A domain application layer may import only its own domain + application and the shared ' +
         'kernel — never adapters, lib, or framework.',
       severity: 'error',
-      from: { path: '^src/domains/[^/]+/application/' },
+      from: {
+        path: '^src/domains/[^/]+/application/',
+        pathNot: ['\\.(test|spec)\\.ts$'],
+      },
       to: {
         pathNot: ['^src/domains/[^/]+/(domain|application)/', '^src/shared/'],
       },

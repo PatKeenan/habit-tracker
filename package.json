@@ -12,7 +12,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "lint": "eslint",
-    "format": "prettier --write . && eslint --fix",
+    "format": "eslint --fix && prettier --write .",
     "check": "prettier --check .",
     "typecheck": "tsc --noEmit",
     "depcruise": "depcruise --config .dependency-cruiser.js src",

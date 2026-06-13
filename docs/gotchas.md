@@ -18,3 +18,21 @@ Test failures are **not** logged here — fix them and keep the regression test 
 - **Process note:** `lint-staged` (pre-commit) runs `eslint --fix` and would have fixed this
   silently, but `validate`'s `lint` step runs plain `eslint` and errors instead. Running
   `pnpm format` before `pnpm validate` avoids the wasted iteration on auto-fixable issues.
+
+### `format` must run `eslint --fix` before `prettier`, not after
+
+- **Seen:** 2026-06-13 — `pnpm format` left mangled imports (`{ dailyScore  }`, a stray `;`) that
+  `pnpm check` (prettier) would then reject.
+- **Cause:** `format` ran `prettier --write . && eslint --fix`, so eslint's autofix output is not
+  re-prettified. `lint-staged` already runs them in the right order (eslint, then prettier).
+- **Prevention:** `format` now runs `eslint --fix && prettier --write .` (prettier last), matching
+  `lint-staged`. Fixed in `package.json`.
+
+### Layer-purity dependency-cruiser rules must exempt test files
+
+- **Seen:** 2026-06-13 — `application/use-cases.test.ts` importing `testing/` fakes tripped
+  `application-stays-framework-free`.
+- **Cause:** the rule's `from` matched every file in `application/`, including `*.test.ts`. Tests
+  legitimately wire fakes from `testing/`.
+- **Prevention:** the layer rules now exempt `*.test.ts` / `*.spec.ts` via `from.pathNot`. Fixed in
+  `.dependency-cruiser.js`.
