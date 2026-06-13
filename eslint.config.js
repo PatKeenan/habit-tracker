@@ -22,6 +22,7 @@ export default [
       'eslint.config.js',
       'prettier.config.js',
       'commitlint.config.js',
+      '.dependency-cruiser.js',
       'src/routes/demo/**',
       'src/db.ts',
     ],
