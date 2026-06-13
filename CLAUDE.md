@@ -33,6 +33,7 @@ doubt, read the decisions below before inventing structure.
 - **Domains:** `docs/domains.md` — registry of the codebase's hexagonal domains (empty for
   now; populated as they emerge).
 - **Conventions:** `docs/conventions/` — commit/PR standards (and more as they're added).
+- **Architecture:** `docs/architecture.md` — module structure and dependency rules.
 - Read the relevant ADR/plan before large changes; don't re-derive settled decisions.
 
 ## Commands

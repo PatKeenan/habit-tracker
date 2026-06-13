@@ -4,6 +4,8 @@ The codebase will be partitioned into **domains** — independent hexagonal slic
 autonomous agents can own without colliding. Each domain has its own pure core, application
 layer (ports + use cases), and adapters, and may **not** import another domain directly
 (enforced by dependency-cruiser; see [ADR 0004](decisions/0004-dependency-cruiser-boundaries.md)).
+The layer structure and dependency rules every domain follows are in
+[`architecture.md`](architecture.md) ([ADR 0007](decisions/0007-module-architecture.md)).
 
 **Status: no domains defined yet.** They will emerge from the first vertical slice (the
 habit core) rather than being designed up front. This file is the registry — when a domain

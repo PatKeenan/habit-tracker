@@ -33,3 +33,4 @@ Then: **Context** (the forces) · **Decision** (what we're doing) · **Consequen
 - [0004](0004-dependency-cruiser-boundaries.md) — Boundary enforcement via dependency-cruiser
 - [0005](0005-conventional-commits-and-enforcement.md) — Conventional Commits + hook-enforced gate
 - [0006](0006-grounded-planning-research-subagents.md) — Grounded planning via read-only research subagents
+- [0007](0007-module-architecture.md) — Module architecture: feature domains × layers
