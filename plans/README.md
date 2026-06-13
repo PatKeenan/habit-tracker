@@ -21,6 +21,9 @@ plans/
   ADRs under `docs/decisions/` at the same time — the plan is the thinking, the ADR is
   the verdict.
 
+Use the `/draft-plan` and `/approve-plan` skills to manage this lifecycle rather than
+hand-editing plan files.
+
 ## Frontmatter
 
 ```yaml
@@ -30,8 +33,26 @@ date: 2026-06-13
 status: draft # draft | approved | final
 author: <name>
 related: [] # paths to related plans / ADRs
+domains: [] # domains this plan touches (from docs/domains.md); empty until they exist
 ---
 ```
+
+## Plan body sections
+
+A plan includes the sections that fit the work. A non-trivial plan is grounded in the
+existing codebase first (the `/draft-plan` skill dispatches read-only research subagents)
+and typically has:
+
+- **Context** — what and why.
+- **Guiding invariants** — pointers to `CLAUDE.md` / ADRs (not restated).
+- **Prior art / Current state** — what already exists, to reuse rather than recreate
+  (with `file:line` references).
+- **Locked decisions** / **Open decisions** — settled vs. still-needing-a-call.
+- **Observed conventions** — de-facto patterns noticed during grounding (candidates for
+  `docs/conventions/` or an ADR at approval).
+- **What we're NOT doing** — an explicit scope fence.
+- **Sequencing** — phases, each with **Automated verification** (runnable commands) and
+  **Manual verification** (checks a human confirms).
 
 ## Note on Claude Code visibility
 
