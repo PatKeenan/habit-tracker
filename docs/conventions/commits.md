@@ -11,7 +11,7 @@ Husky, CI); skills and `CLAUDE.md` point here. See
 
 <body — the WHY, wrapped at ~72 columns>
 
-<footers — Refs/Closes, BREAKING CHANGE, Co-authored-by>
+<footers — Refs/Closes, BREAKING CHANGE>
 ```
 
 ### Types
