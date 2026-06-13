@@ -15,6 +15,15 @@ export default [
     },
   },
   {
-    ignores: ['eslint.config.js', 'prettier.config.js'],
+    // Config files (not part of the typed-lint tsconfig project) plus starter
+    // example/scaffolding code that is pending removal during the product build
+    // (see plans/approved + ADR 0003). Excluded from lint only — still in the app.
+    ignores: [
+      'eslint.config.js',
+      'prettier.config.js',
+      'commitlint.config.js',
+      'src/routes/demo/**',
+      'src/db.ts',
+    ],
   },
 ]
