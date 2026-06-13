@@ -13,7 +13,15 @@ becomes real, add it below.
 
 ## Registry
 
-_None yet._
+### habits
+
+- **Owns:** creating habits with a category and a weekday schedule, marking them done (or
+  running a timer), and computing the daily score.
+- **Boundary:** habit definitions, recurrence (weekday set), completions, and scoring. Not
+  per-user identity (auth) and not notification delivery (a `Notifier` port stubs that).
+- **Outbound ports:** `HabitRepository`, `Clock`, `Notifier`.
+- **May depend on:** the shared kernel only — never another domain.
+- **Owning agent:** TBD (once domain agents exist).
 
 <!-- Template for when a domain becomes real:
 
