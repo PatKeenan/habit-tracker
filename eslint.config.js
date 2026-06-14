@@ -24,7 +24,6 @@ export default [
       'commitlint.config.js',
       '.dependency-cruiser.js',
       'src/routes/demo/**',
-      'src/db.ts',
     ],
   },
 ]
