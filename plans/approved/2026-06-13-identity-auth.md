@@ -1,12 +1,15 @@
 ---
 title: Identity & Auth Persistence
 date: 2026-06-13
-status: draft
+status: approved
 author: Pat Keenan
 related:
   - ../approved/2026-06-13-habit-core-slice.md
   - ../../docs/decisions/0003-single-drizzle-neon-adapter.md
   - ../../docs/decisions/0007-module-architecture.md
+  - ../../docs/decisions/0010-identity-is-infrastructure.md
+  - ../../docs/decisions/0011-server-side-identity-helper.md
+  - ../../docs/decisions/0012-cross-domain-references-by-id.md
 domains: []
 ---
 

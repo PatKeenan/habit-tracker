@@ -36,3 +36,6 @@ Then: **Context** (the forces) · **Decision** (what we're doing) · **Consequen
 - [0007](0007-module-architecture.md) — Module architecture: feature domains × layers
 - [0008](0008-failure-ledger.md) — Failure ledger and the self-improvement loop
 - [0009](0009-plan-completeness-checks.md) — Plan completeness: dependency tracing + assumption verification + critic
+- [0010](0010-identity-is-infrastructure.md) — Identity is infrastructure, not a feature domain
+- [0011](0011-server-side-identity-helper.md) — Server-side identity via a single getCurrentUserId helper
+- [0012](0012-cross-domain-references-by-id.md) — Cross-domain references are by id, with no database foreign key
