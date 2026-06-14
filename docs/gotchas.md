@@ -46,3 +46,14 @@ Test failures are **not** logged here — fix them and keep the regression test 
 - **Prevention:** the plan template now has "Data model & relationships" + "Assumptions to verify"
   sections; grounding is dependency-scoped; a `plan-critic` subagent challenges drafts. See
   [ADR 0009](decisions/0009-plan-completeness-checks.md).
+
+### Better Auth's Drizzle adapter over neon-http needs `transaction: false`
+
+- **Seen:** 2026-06-13 — caught in planning (identity & auth plan), before it bit at runtime.
+- **Cause:** the Neon serverless **HTTP** driver (`@neondatabase/serverless` via
+  `drizzle-orm/neon-http`) has no interactive transactions. Better Auth's `drizzleAdapter`
+  wraps multi-step writes in a transaction by default, which neon-http can't honor.
+- **Prevention:** pass `transaction: false` to `drizzleAdapter(db, { provider: 'pg',
+transaction: false, ... })`. Verified safe on `better-auth@1.6.18`. If a flow ever needs real
+  transactions, switch that path to the WebSocket `Pool` driver (`drizzle-orm/neon-serverless`)
+  per [ADR 0003](decisions/0003-single-drizzle-neon-adapter.md), not neon-http.
