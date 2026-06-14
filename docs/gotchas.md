@@ -36,3 +36,13 @@ Test failures are **not** logged here — fix them and keep the regression test 
   legitimately wire fakes from `testing/`.
 - **Prevention:** the layer rules now exempt `*.test.ts` / `*.spec.ts` via `from.pathNot`. Fixed in
   `.dependency-cruiser.js`.
+
+### Plans must trace dependencies and verify assumptions, not just intra-domain existence
+
+- **Seen:** 2026-06-13 — the habit-core slice missed that a habit belongs to a user, and assumed
+  Better Auth persisted users (it had no DB adapter). The gap surfaced at migration time.
+- **Cause:** grounding verified what _exists in the domain_ but not what the feature _depends on /
+  relates to_ — and a key dependency (user persistence) was assumed, not verified.
+- **Prevention:** the plan template now has "Data model & relationships" + "Assumptions to verify"
+  sections; grounding is dependency-scoped; a `plan-critic` subagent challenges drafts. See
+  [ADR 0009](decisions/0009-plan-completeness-checks.md).

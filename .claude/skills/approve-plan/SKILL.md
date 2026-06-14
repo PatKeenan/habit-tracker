@@ -22,10 +22,11 @@ committing gate — be deliberate.
 1. **Identify the draft.** If a slug argument was given, use `plans/drafts/<slug>.md`. Otherwise
    list `plans/drafts/*.md` and ask the user which one (or pick the obvious single match). Read it.
 
-2. **Light duplication re-check.** Skim the plan's "Prior art" + "Locked decisions" for anything
-   that would duplicate or contradict existing code/decisions. If unsure, dispatch
-   `decisions-locator` / `codebase-pattern-finder` to confirm, and flag conflicts to the user
-   before promoting.
+2. **Completeness re-check.** Skim the plan for (a) anything that would duplicate or contradict
+   existing code/decisions, and (b) gaps — unaccounted entity relationships, ownership/auth, or
+   assumed-but-unverified dependencies. If unsure, dispatch `plan-critic` (or `decisions-locator` /
+   `codebase-pattern-finder`) to confirm. Flag conflicts or blocking gaps to the user before
+   promoting.
 
 3. **Confirm the ADR list.** Decide which locked decisions are _architecturally significant_ and
    warrant an ADR — not every line needs one. Show the user the intended ADRs and get a yes.

@@ -47,9 +47,13 @@ and typically has:
 - **Guiding invariants** — pointers to `CLAUDE.md` / ADRs (not restated).
 - **Prior art / Current state** — what already exists, to reuse rather than recreate
   (with `file:line` references).
+- **Data model & relationships** — for every persisted entity, what it references and where that
+  comes from ("where does this id come from?").
 - **Locked decisions** / **Open decisions** — settled vs. still-needing-a-call.
 - **Observed conventions** — de-facto patterns noticed during grounding (candidates for
   `docs/conventions/` or an ADR at approval).
+- **Assumptions to verify (not assume)** — every dependency the plan leans on, and how each was
+  verified against the codebase.
 - **What we're NOT doing** — an explicit scope fence.
 - **Sequencing** — phases, each with **Automated verification** (runnable commands) and
   **Manual verification** (checks a human confirms).

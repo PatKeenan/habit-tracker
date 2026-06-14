@@ -30,7 +30,10 @@ durable, tracked artifact. Use plan mode to think, this to capture the result.
    - `codebase-pattern-finder` — existing patterns/types to reuse (so the plan doesn't duplicate).
    - `decisions-locator` — prior ADRs / conventions / plans this work must not contradict.
 
-   Skip grounding for trivial work (a docs typo, a config tweak).
+   Grounding is **dependency-scoped, not just domain-scoped**: also trace what the feature
+   depends on / relates to (auth, ownership, shared entities) and **verify it actually exists and
+   works — never assume a library is wired.** Skip grounding only for trivial work (a docs typo,
+   a config tweak).
 
 3. **Create the draft** at `plans/drafts/YYYY-MM-DD-<slug>.md` (`<slug>` = short kebab-case of the
    title). Frontmatter: `title`, `date`, `status: draft`, `author`, `related: []`, `domains: []`
@@ -41,18 +44,28 @@ durable, tracked artifact. Use plan mode to think, this to capture the result.
    - **Guiding invariants** — point to `CLAUDE.md` / relevant ADRs; don't restate them.
    - **Prior art / Current state** — what already exists (from grounding): reuse THESE, don't
      recreate them. Cite `file:line`.
+   - **Data model & relationships** — for every persisted entity, what it references and where
+     that comes from. Ask "where does this id come from?" (this is the section that catches a
+     missing related entity, e.g. a habit's owning user).
    - **Locked decisions** — settled choices (link the ADR if one exists).
    - **Open decisions** — choices needing the user's call, each with a recommendation + trade-off.
    - **Observed conventions** — de-facto patterns grounding surfaced that aren't documented yet
      (candidates for `docs/conventions/` or an ADR at approval).
+   - **Assumptions to verify (not assume)** — every dependency the plan leans on, and how each was
+     verified against the codebase (never list an unverified "X is already handled").
    - **What we're NOT doing** — an explicit scope fence.
    - **Sequencing** — phases, each with **Automated verification** (commands that can be run) and
      **Manual verification** (checks a human must confirm).
 
-5. **Drive the loop.** Present the draft, focus the user on the **Open decisions**, and resolve
+5. **Critique for completeness.** Before involving the user, dispatch the `plan-critic` subagent
+   to adversarially check the draft for unaccounted relationships, ownership/auth, assumed-but-
+   unverified dependencies, and lifecycle/edge cases. Resolve blocking gaps (verify, don't assume)
+   and fold the fixes into the draft.
+
+6. **Drive the loop.** Present the draft, focus the user on the **Open decisions**, and resolve
    them one at a time (moving each into Locked). Keep editing the same file — don't start a new one.
 
-6. **Hand off.** When the user is satisfied, tell them to run `/approve-plan`. Do NOT promote or
+7. **Hand off.** When the user is satisfied, tell them to run `/approve-plan`. Do NOT promote or
    create ADRs here — that is the other skill's job.
 
 ## Notes

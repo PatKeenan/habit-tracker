@@ -35,3 +35,4 @@ Then: **Context** (the forces) · **Decision** (what we're doing) · **Consequen
 - [0006](0006-grounded-planning-research-subagents.md) — Grounded planning via read-only research subagents
 - [0007](0007-module-architecture.md) — Module architecture: feature domains × layers
 - [0008](0008-failure-ledger.md) — Failure ledger and the self-improvement loop
+- [0009](0009-plan-completeness-checks.md) — Plan completeness: dependency tracing + assumption verification + critic
