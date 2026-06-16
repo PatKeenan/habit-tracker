@@ -1,6 +1,7 @@
 ---
 name: draft-plan-ci
 description: Autonomously draft a plan in plans/drafts/ for an agent-factory ticket, grounded in the codebase. Non-interactive — emits open decisions as a structured artifact for the orchestrator to post to Linear, instead of asking. Invoked explicitly by the runner.
+disable-model-invocation: true
 allowed-tools: Read, Write, Bash, Agent
 ---
 
